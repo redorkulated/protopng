@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+enum ExampleEnum
+{
+  LETTER_UNSPECIFIED = 0;
+  LETTER_A = 1;
+  LETTER_B = 2;
+  LETTER_C = 3;
+  LETTER_D = 4;
+}
+message ExampleTest
+{
+  string exampleTestString = 1;
+  repeated ExampleRepeated exampleRepeatedMessage = 4;
+}
+message ExampleRepeated
+{
+  optional string exampleStringType = 1;
+  optional bytes exampleBytesType = 2;
+  optional int32 exampleInt32Type = 3;
+  optional uint32 exampleUInt32Type = 4;
+  optional sint32 exampleSInt32Type = 5;
+  optional int32 exampleInt64Type = 6;
+  optional uint32 exampleUInt64Type = 7;
+  optional sint32 exampleSInt64Type = 8;
+  optional bool exampleBoolType = 9;
+  optional fixed32 exampleFixed32Type = 10;
+  optional fixed64 exampleFixed64Type = 11;
+  optional fixed32 exampleSFixed32Type = 12;
+  optional fixed64 exampleSFixed64Type = 13;
+  optional float exampleFloatType = 14;
+  optional double exampleDoubleType = 15;
+  optional map<string, ExampleNested> exampleMapType = 16;
+  optional ExampleEnum exampleEnumType = 17;
+
+  repeated string exampleRepeatedStringType = 21;
+  repeated bytes exampleRepeatedBytesType = 22;
+  repeated int32 exampleRepeatedInt32Type = 23;
+  repeated uint32 exampleRepeatedUInt32Type = 24;
+  repeated sint32 exampleRepeatedSInt32Type = 25;
+  repeated int32 exampleRepeatedInt64Type = 26;
+  repeated uint32 exampleRepeatedUInt64Type = 27;
+  repeated sint32 exampleRepeatedSInt64Type = 28;
+  repeated bool exampleRepeatedBoolType = 29;
+  repeated fixed32 exampleRepeatedFixed32Type = 30;
+  repeated fixed64 exampleRepeatedFixed64Type = 31;
+  repeated fixed32 exampleRepeatedSFixed32Type = 32;
+  repeated fixed64 exampleRepeatedSFixed64Type = 33;
+  repeated float exampleRepeatedFloatType = 34;
+  repeated double exampleRepeatedDoubleType = 35;
+  repeated ExampleEnum exampleRepeatedEnumType = 37;
+
+  optional ExampleNested exampleNestedMessage= 42;
+
+  optional string exampleBigFieldID = 1337;
+}
+message ExampleNested
+{
+  optional string exampleStringType = 1;
+  optional bytes exampleBytesType = 2;
+  optional int32 exampleInt32Type = 3;
+  optional uint32 exampleUInt32Type = 4;
+  optional sint32 exampleSInt32Type = 5;
+  optional int32 exampleInt64Type = 6;
+  optional uint32 exampleUInt64Type = 7;
+  optional sint32 exampleSInt64Type = 8;
+  optional bool exampleBoolType = 9;
+  optional fixed32 exampleFixed32Type = 10;
+  optional fixed64 exampleFixed64Type = 11;
+  optional fixed32 exampleSFixed32Type = 12;
+  optional fixed64 exampleSFixed64Type = 13;
+  optional float exampleFloatType = 14;
+  optional double exampleDoubleType = 15;
+  optional ExampleEnum exampleEnumType = 17;
+
+  repeated string exampleRepeatedStringType = 21;
+  repeated bytes exampleRepeatedBytesType = 22;
+  repeated int32 exampleRepeatedInt32Type = 23;
+  repeated uint32 exampleRepeatedUInt32Type = 24;
+  repeated sint32 exampleRepeatedSInt32Type = 25;
+  repeated int32 exampleRepeatedInt64Type = 26;
+  repeated uint32 exampleRepeatedUInt64Type = 27;
+  repeated sint32 exampleRepeatedSInt64Type = 28;
+  repeated bool exampleRepeatedBoolType = 29;
+  repeated fixed32 exampleRepeatedFixed32Type = 30;
+  repeated fixed64 exampleRepeatedFixed64Type = 31;
+  repeated fixed32 exampleRepeatedSFixed32Type = 32;
+  repeated fixed64 exampleRepeatedSFixed64Type = 33;
+  repeated float exampleRepeatedFloatType = 34;
+  repeated double exampleRepeatedDoubleType = 35;
+  repeated ExampleEnum exampleRepeatedEnumType = 37;
+
+  optional string exampleBigFieldID = 1337;
+}
