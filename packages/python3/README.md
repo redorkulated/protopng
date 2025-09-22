@@ -47,19 +47,17 @@ You can either use the official and supported [python protobuf](https://protobuf
 
 Here we will go into the details for the interface packaged with this module. For a full example you can checkout the test [01-ExampleNested.py](../../tests/python3/01-ExampleNested.py) .
 
-To access this interface it is all within `protopng.protobuf` .
-
 ### Message
 At the heart of protopng, much the same as protobuf itself is the message. This method can be used in two ways, once to define a message (we will cover that in this section) and secondly as a field in another message ([see fields](#user-content-complex-fields)).
 
 ##### Defining a Message
 A message is defined as a list of fields
 
-`protopng.protobuf.message`(
+`protopng.message`(
 
 > `fields` - `<[field]>` - A `list`/`tuple` of fields
 
-) -> returns `protopng.protobuf.message` instance
+) -> returns `protopng.message` instance
 
 ##### Encoding Data using the Message
 The `encode` method of a message instance can be used :
@@ -72,8 +70,8 @@ message`.encode`(
 
 ##### Encoding Example
 ```
-ExampleMessage= protopng.protobuf.message([
-	protopng.protobuf.string_field("exampleStringType" , 1),
+ExampleMessage= protopng.message([
+	protopng.string_field("exampleStringType" , 1),
 ])
 encoded_bytes= ExampleMessage.encode({"exampleStringType":"Hello, World!"})
 ```
@@ -81,12 +79,12 @@ encoded_bytes= ExampleMessage.encode({"exampleStringType":"Hello, World!"})
 ##### Nesting Messages
 You can [nest](https://protobuf.dev/programming-guides/proto3/#nested) messages within each other. Here is a very simple example
 ```
-MessageA= protopng.protobuf.message([
-	protopng.protobuf.string_field("exampleStringType" , 1),
+MessageA= protopng.message([
+	protopng.string_field("exampleStringType" , 1),
 ])
-MessageB= protopng.protobuf.message([
-	protopng.protobuf.message("nestedA" , 1 , MessageB),
-	protopng.protobuf.messages("nestedARepeated" , 2 , MessageB),
+MessageB= protopng.message([
+	protopng.message("nestedA" , 1 , MessageB),
+	protopng.messages("nestedARepeated" , 2 , MessageB),
 ])
 ```
 
@@ -96,7 +94,7 @@ A basic Enum is following the same pattern as within [protobuf](https://protobuf
 ##### Defining an Enum
 An Enum is defined as a a list of values and constants
 
-`protopng.protobuf.enum_field`(
+`protopng.enum_field`(
 
 > `values` - `<dict>` or `<list>` or `<Enum>` - The list of values and constants within this Enum
 
@@ -112,7 +110,7 @@ Enum as an input expects
 ##### Examples
 Defining an Enum using a `Dict` as input:
 ```
-Example= protopng.protobuf.enum_field({
+Example= protopng.enum_field({
 	"EXAMPLE_UNSPECIFIED":0,
 	"EXAMPLE_A":1
 })
@@ -120,7 +118,7 @@ Example= protopng.protobuf.enum_field({
 
 Defining an Enum using an `list of lists` as input
 ```
-Example= protopng.protobuf.enum_field([
+Example= protopng.enum_field([
 	["EXAMPLE_UNSPECIFIED" , 0],
 	["EXAMPLE_A" , 1]
 ])
@@ -132,14 +130,14 @@ from enum import Enum
 class ExampleEnum(Enum) :
 	EXAMPLE_UNSPECIFIED= 0
 	EXAMPLE_A= 1
-Example= protopng.protobuf.enum_field(ExampleEnum)
+Example= protopng.enum_field(ExampleEnum)
 ```
 
 ### Fields
 Protopng allows you to define the fields within messages to match any type that [protobuf has](https://protobuf.dev/programming-guides/proto3/#specifying-types). There is no way to define fields as optional since we treat all fields as optional. You can, and should, define a field as repeated, for each type there exists a singleton method and repeated method.
 
 #### Simple Fields
-`protopng.protobuf.<method>`(
+`protopng.<method>`(
 
 > `field_name` - `string` - The name and key of this field
 
@@ -169,10 +167,10 @@ Protopng allows you to define the fields within messages to match any type that 
 
 ##### Simple Fields Example
 ```
-MessageWithSimpleFields= protopng.protobuf.message([
-	protopng.protobuf.string_field("exampleString" , 1),
-	protopng.protobuf.float_field("exampleFloat" , 2),
-	protopng.protobuf.bool_repeated("repeatedBooleans" , 3),
+MessageWithSimpleFields= protopng.message([
+	protopng.string_field("exampleString" , 1),
+	protopng.float_field("exampleFloat" , 2),
+	protopng.bool_repeated("repeatedBooleans" , 3),
 ])
 ```
 
@@ -205,9 +203,9 @@ These field types require a third parameter as part of it's definition
 ##### Map Field Example
 You need to define the key type and value type of the items within the map. Protobuf does not allow multiple types as a value but does allow the value to be a message (where optional fields can be used).
 ```
-ExampleMessageWithMap= protopng.protobuf.message([
-	protopng.map_field("mapWithSimpleType" , 1 , [ protopng.protobuf.string_field , protopng.protobuf.uint32_field ] ),
-	protopng.map_field("mapWithMessage" , 2 , [ protopng.protobuf.string_field , AnotherDefinedMessage ] ),
+ExampleMessageWithMap= protopng.message([
+	protopng.map_field("mapWithSimpleType" , 1 , [ protopng.string_field , protopng.uint32_field ] ),
+	protopng.map_field("mapWithMessage" , 2 , [ protopng.string_field , AnotherDefinedMessage ] ),
 ])
 ```
 
