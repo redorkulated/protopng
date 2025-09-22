@@ -17,7 +17,7 @@ def create(original_payload:bytes | bytearray) -> bytes :
 	original_payload_length= len(original_payload)
 	transport_payload= (
 		# Metadata Payload
-		protobuf._varint_enc(PROTOPNG_PROTOCOL_VERSION,is_unsigned=True) # Protopgn Protocol Version
+		protobuf._varint_enc(PROTOPNG_PROTOCOL_VERSION,is_unsigned=True) # Protopng Protocol Version
 		+ protobuf._varint_enc(original_payload_length,is_unsigned=True) # Original Payload Length
 
 		# Append Original Payload

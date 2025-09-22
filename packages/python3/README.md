@@ -9,7 +9,7 @@ import protopng
 By design there are no requirements needed to be installed for this module to work; only the [python built-in modules](https://docs.python.org/3/py-modindex.html) are needed.
 
 ## Example
-A very simple example of how to use the protopng python module
+A very basic example of how to use the protopng python module
 ```
 import protopng
 # Generate the encoded protobuf data using the standard compiled protobuf interface
@@ -27,8 +27,8 @@ For more detail on the protopng encoding itself [see the protocol here](../../pr
 
 ## Interface
 
-### Creating the protopng
-The interface is super simple if you are already using the standard [protobuf serialisation](https://protobuf.dev/getting-started/pythontutorial/). 
+### Creating a protopng
+The interface is very lightweight if you are already using the standard [protobuf serialisation](https://protobuf.dev/getting-started/pythontutorial/).
 
 ##### Create
 `protopng.create`(

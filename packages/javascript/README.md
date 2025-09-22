@@ -7,7 +7,7 @@ import * as protopng from "./protopng/protopng.js"
 ```
 
 ## Example
-A very simple example of how to use the protopng javascript module
+A very basic example of how to use the protopng javascript module
 ```
 import * as protopng from "./protopng/protopng.js"
 const ExampleMessage= protopng.message([
