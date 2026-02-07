@@ -24,8 +24,8 @@ const ExampleMessage= protopng.message([
 	protopng.string_field("exampleStringType" , 1),
 ]);
 ExampleTest.fetch("./example.png")
-  .then((fetched_data)=>{ console.log(fetched_data); }
-  .catch((process_error)=>console.error(process_error); }
+  .then((fetched_data)=>{ console.log(fetched_data); })
+  .catch((process_error)=>{ console.error(process_error); })
 ```
 
 ## How?
